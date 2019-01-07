@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/aboutDeveloper.css" th:href="@{/css/aboutDeveloper.css}" type="text/css" />
+    <title>&#220;ber den Entwickler</title>
+</head>
+<body>
+<nav th:replace="fragments/general-includes :: header"></nav>
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-sm-10">
+            <h2>Der Entwickler der Seite</h2>
+            <hr class="gradient-style-left" />
+            <div class="pull-right">
+                <img class="aboutDevPicture" th:src="@{/images/aboutDeveloper/henning-nobbe-ava.jpg}" align="left"/>
+            </div>
+            <h3>Henning Nobbe...</h3>
+            <p class="justify">... ist gelernter Industriekaufmann und begann im Wintersemester 2012/2013 den Studiengang
+                Betriebliches Informationsmanagement an der Hochschule Osnabrück. Im April 2016 schloss er das Studium mit
+                dem Bachelor of Science ab und startete in den Beruf des Software-Entwicklers. Mittlerweile ist er als
+                IT-Consultant für die Firma INNOQ tätig und ist in der JVM zu Hause, versucht sich aber seit einiger Zeit
+                vermehrt mit Frontend-Technologien.
+            </p>
+            <div>
+                <a href="https://twitter.com/intent/tweet?screen_name=h3nn1n9_89&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">
+                    @h3nn1n9_89</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

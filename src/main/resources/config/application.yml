@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: false
+  datasource:
+    url: ${ART_DB_URL:jdbc:mysql://localhost:3306/artist}
+    username: ${ART_DB_U:root}
+    password: ${ART_DB_P:geheim01}
+  servlet:
+    multipart:
+      max-File-Size: 10MB
+      max-Request-Size: 30MB
+
+email:
+  sender: ${ART_EMAIL_SENDER}
+  password: ${ART_EMAIL_PASSWORD}
+  recipient: ${ART_EMAIL_RECIPIENT}
+  
+painting-file-pathes:
+  representational: ${PATH_TO_REPRESENTATIONAL}
+  abstractpath: ${PATH_TO_ABSTRACT}
+  exhibition: ${PATH_TO_EXHIBITION}
+  current: ${PATH_TO_CURRENT}
+  collage: ${PATH_TO_COLLAGE}
+  drawing: ${PATH_TO_DRAWING}
+  about: ${PATH_TO_ABOUT}
+  index: ${PATH_TO_INDEX}

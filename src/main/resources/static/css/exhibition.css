@@ -1,0 +1,64 @@
+.jumbotron p {
+	font-size: 1.3em;
+}
+
+input[type=date] {
+    max-width: 20%;
+}
+
+input[type=text] {
+    max-width: 50%;
+}
+
+textarea {
+    min-height: 200px;
+    max-width: 600px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.exhibition-text {
+    padding-bottom: 20px;
+}
+
+.jumbotron .container .exhibition-container {
+    min-height: 450px;
+    max-width: 85%;
+    border: 1px solid rgba(170, 170, 170, 0.2);
+    margin-bottom: 25px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.detail-painting-container {
+    min-height: 250px;
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+
+.detail-painting {
+    min-height: 250px;
+    max-height: 400px;
+    margin-bottom: 20px;
+    border: 5px solid white; /*#A8A8A8;*/
+}
+
+.detail-poster {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 5px solid white; /*#A8A8A8;*/
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    max-height: 600px;
+}
+
+.overview-container-painting {
+    height: 140px;
+    border: 5px solid white; /*#A8A8A8;*/
+    margin-bottom: 15px;
+    max-width: 90%;
+}

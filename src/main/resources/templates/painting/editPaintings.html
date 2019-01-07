@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/painting.css" th:href="@{/css/painting.css}" type="text/css" />
+    <title th:text="${title}">Art der Malerei - Bearbeiten</title>
+</head>
+<body>
+<nav th:replace="fragments/general-includes :: header"></nav>
+<div class="jumbotron">
+    <div class="container">
+        <h2 th:text="${title}">Art der Malerei - Bearbeiten</h2>
+        <hr class="gradient-style-left" />
+    </div>
+    <div class="container">
+        <form method="post" th:action="@{/art/__${category}__/edit}" th:object="${wrapper}">
+            <label>Beschreibung-Teaser:</label><br/>
+            <textarea class="form-control" th:text="${description.descriptionTeaser}" id="description-teaser" name="description-teaser"></textarea>
+            <br/>
+            <label>Beschreibung-Mehr:</label><br/>
+            <textarea class="form-control" th:text="${description.descriptionMore}" id="description-more" name="description-more"></textarea>
+            <div class="row">
+                <th:block th:each="painting, stat : *{paintings}">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="painting-container-edit">
+                            <div class="thumbnail">
+                                <img th:attr="src=@{/art/__${category}__/image/{filename}(filename=${painting.datei})}" />
+                            </div>
+                            <input type="hidden" th:value="${painting.id}" th:field="*{paintings[__${stat.index}__].id}"/>
+                            <input type="hidden" th:value="${painting.datei}" th:field="*{paintings[__${stat.index}__].datei}"/>
+                            <input type="hidden" th:value="${painting.hauptkategorie}" th:field="*{paintings[__${stat.index}__].hauptkategorie}"/>
+                            <input type="hidden" th:value="${painting.unterkategorie}" th:field="*{paintings[__${stat.index}__].unterkategorie}"/>
+                            <label>Bildname</label>
+                            <input type="text" th:field="*{paintings[__${stat.index}__].name}"/><br/>
+
+                            <label>Technik</label>
+                            <input type="text" th:field="*{paintings[__${stat.index}__].technik}"/><br/>
+
+                            <label>Höhe</label>
+                            <input type="number" th:value="${painting.hoehe}" th:field="*{paintings[__${stat.index}__].hoehe}" step="0.01" min="0"/><br/>
+
+                            <label>Breite</label>
+                            <input type="number" th:field="*{paintings[__${stat.index}__].breite}" step="0.01" min="0"/><br/>
+
+                            <label>Entstehungsjahr</label>
+                            <input type="number" th:field="*{paintings[__${stat.index}__].entstehungsjahr}"/><br/><br/>
+
+                            <input type="checkbox" th:value="${painting.markedAsDeleted}"
+                                th:field="*{paintings[__${stat.index}__].markedAsDeleted}" />
+                            <label>Löschen</label>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+            <button type="submit" class="btn btn-primary blog-input">
+                <i class="fa fa-floppy-o"></i> Speichern
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/exhibition.css"
+          th:href="@{/css/exhibition.css}" type="text/css" />
+    <title>Ausstellung - bearbeiten</title>
+</head>
+<body>
+<nav th:replace="fragments/general-includes :: header"></nav>
+<div class="jumbotron">
+    <div class="container">
+        <h2>Ausstellung bearbeiten</h2>
+        <hr class="gradient-style-left" />
+    </div>
+    <div class="container">
+        <form method="post" th:action="@{/exhibition/edit/__${exhibition.id}__}" th:object="${exhibitionWrapper}">
+            <input type="hidden" th:field="*{exhibition.id}"/>
+            <input type="hidden" th:field="*{exhibition.startDate}"/>
+            <input type="hidden" th:field="*{exhibition.endDate}"/>
+            <label>Titel:</label>
+            <input class="form-control" type="text" th:field="*{exhibition.title}"/>
+            <label>Beginn</label>
+            <label th:text="${' (aktuell ' + #dates.format(exhibition.startDate, 'dd.MM.yyyy') + '):'}"></label>
+            <input class="form-control" type="date" id="startDate" name="startDate"/>
+            <label>Ende</label>
+            <label th:text="${' (aktuell ' + #dates.format(exhibition.endDate,'dd.MM.yyyy') + '):'}"></label>
+            <input class="form-control" type="date" id="endDate" name="endDate"/><br/>
+            <label>Aussteller:</label>
+            <input type="text" name="exhibitor" class="form-control" th:field="*{exhibition.exhibitor}" /><br/>
+            <label>Ort:</label>
+            <input type="text" name="location" class="form-control" th:field="*{exhibition.location}" /><br/>
+            <label>&#214;ffnungszeiten:</label>
+            <input type="text" name="openingtimes" class="form-control" th:field="*{exhibition.openingTimes}" /><br/>
+            <label>Vernissage:</label>
+            <input type="text" name="vernissage" class="form-control" th:field="*{exhibition.vernissage}" /><br/>
+            <label>Beschreibung:</label>
+            <textarea class="form-control" type="date" th:field="*{exhibition.description}"/>
+            <label>Link:</label>
+            <input class="form-control" type="text" th:field="*{exhibition.link}"/>
+            <br/>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-floppy-o"></i> Ausstellungsdaten Speichern
+            </button>
+        </form>
+        <hr class="gradient-style-left" />
+        <th:block th:unless="${#lists.isEmpty(exhibition.paintings)}">
+            <label>Ausstellungsbilder löschen:</label>
+            <div class="container">
+                <div class="row">
+                    <th:block th:each="painting : ${exhibition.paintings}">
+                        <div class="col-sm-4">
+                            <form method="post" th:action="@{/exhibition/painting/delete/__${painting.id}__/__${painting.exhibition.id}__}">
+                                <div class="thumbnail">
+                                    <img th:attr="src=@{/art/exhibition/image/{filename}(filename=${painting.datei})}" />
+                                </div>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash-o"></i> Bild Löschen
+                                </button>
+                            </form>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+            <hr class="gradient-style-left" />
+        </th:block>
+
+        <form method="post" th:action="@{/exhibition/painting/add/__${exhibition.id}__}" enctype="multipart/form-data">
+            <label>Bilder hinzufügen:</label>
+            <input type="file" class="form-control" id="new-paintings" name="new-paintings" required="required" accept="image/*" multiple="multiple"/>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-floppy-o"></i> Bild&#40;er&#41; Speichern
+            </button>
+        </form>
+        <hr class="gradient-style-left" />
+        <br/>
+
+        <th:block th:unless="${exhibition.poster == null}">
+            <label>Plakat löschen:</label>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <form method="post" th:action="@{/exhibition/poster/delete/__${exhibition.poster.id}__/__${exhibition.id}__}">
+                            <div class="thumbnail">
+                                <img th:attr="src=@{/art/exhibition/image/{filename}(filename=${exhibition.poster.filename})}" />
+                            </div>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i> Plakat Löschen
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr class="gradient-style-left" />
+        </th:block>
+
+        <form th:if="${exhibition.poster == null}" method="post" th:action="@{/exhibition/poster/add/__${exhibition.id}__}" enctype="multipart/form-data">
+            <label>Plakat hinzufügen:</label>
+            <input type="file" class="form-control" id="new-poster" name="new-poster" required="required" accept="image/*"/>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-floppy-o"></i> Plakat Speichern
+            </button>
+            <hr class="gradient-style-left" />
+        </form>
+
+        <form method="post" th:action="@{/exhibition/delete/__${exhibition.id}__}">
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash-o"></i> Ausstellung ganz Löschen
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

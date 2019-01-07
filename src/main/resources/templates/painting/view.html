@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/painting.css" th:href="@{/css/painting.css}" type="text/css" />
+    <title th:text="${title}">Art der Malerei</title>
+</head>
+<body>
+<nav th:replace="fragments/general-includes :: header"></nav>
+<div class="jumbotron">
+    <div class="container">
+        <div th:if="${loggedIn}">
+            <a th:href="@{/art/__${category}__/new}" class="btn btn-primary"><i class="fa fa-plus"></i> Neues Werk erfassen</a>
+            <a th:href="@{/art/__${category}__/edit}" class="btn btn-primary"><i class="fa fa-pencil"></i> Seite bearbeiten</a>
+        </div>
+        <h2 th:text="${title}">Art der Malerei</h2>
+        <hr class="gradient-style-left" />
+        <div class="container description" th:unless="${description.isEmpty()}">
+            <p th:utext="${description.descriptionTeaser}"></p>
+            <details th:unless="${description.descriptionMore.isEmpty()}">
+                <summary>mehr</summary>
+                <p th:utext="${description.descriptionMore}"></p>
+            </details>
+            <hr class="gradient-style-right" /><br/>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <th:block th:each="painting : ${paintings}">
+                <div class="col-xs-9 col-sm-5 col-md-4">
+                    <div class="painting-container">
+                        <div class="thumbnail">
+                            <a th:href="@{/art/__${category}__/image/{filename}(filename=${painting.datei})}">
+                                <img th:attr="src=@{/art/__${category}__/image/{filename}(filename=${painting.datei})}" />
+                            </a>
+                        </div>
+                        <h4 th:text="${painting.name}">Bildname</h4>
+                        <p th:text="${painting.entstehungsjahr}">Entstehungsjahr</p>
+                        <p th:text="${painting.technik}">Technik</p>
+                        <p th:text="${painting.hoehe} + ' cm x ' + ${painting.breite} + ' cm'">Maße</p>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>

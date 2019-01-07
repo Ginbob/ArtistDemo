@@ -1,0 +1,17 @@
+#contact-email {
+	max-width: 50%;
+}
+
+#contact-message {
+	width: 80%;
+	height: 40%;
+	min-height: 300px;
+}
+
+#contact-reason {
+	width: 80%;
+}
+
+.contact-input {
+	margin-bottom: 10px;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/impressum.css"
+          th:href="@{/css/impressum.css}" type="text/css" />
+    <title>Impressum</title>
+</head>
+<body>
+    <nav th:replace="fragments/general-includes :: header"></nav>
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Impressum</h2><br/>
+            <h3>Angaben gemäß § 5 TMG:</h3>
+            <p>Ludwig Burandt<br/>
+                Bildendender Künstler<br/>
+                Waldstraße 14<br/>
+                49170 Hagen am Teutoburger Wald
+            </p>
+            <br/>
+            <h3>Kontakt:</h3>
+            <p>Telefon: 05401 980165<br/>
+                E-Mail: <a href="mailto:kontakt@ludwig-burandt.de">kontakt@ludwig-burandt.de</a>
+            </p>
+            <br/>
+
+            <h3>Über den Entwickler der Website:</h3>
+            <p>
+                <a th:href="${#mvc.url('aboutDeveloper').build()}">Henning Nobbe</a>
+            </p>
+            <br/>
+
+            <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
+            <p>Ludwig Burandt<br/>
+                Waldstraße 14<br/>
+                49170 Hagen am Teutoburger Wald</p>
+            <br/>
+            <h3>Haftung für Inhalte:</h3>
+            <p>
+                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+                allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+                zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+            </p>
+            <p>
+                Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+                Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+                Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+                Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+            </p>
+
+            <br/>
+            <h3>Haftung für Links:</h3>
+            <p>
+                Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+                Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+                verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+                Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+
+            </p>
+            <p>
+                Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte
+                einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige
+                Links umgehend entfernen.
+            </p>
+
+            <br/>
+            <h3>Urheberrecht:</h3>
+            <p>
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+                Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+                Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+            </p>
+            <p>
+                Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte
+                Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem
+                auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis.
+                Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+            </p>
+            <br/>
+            <h2>Datenschutzerkl&auml;rung</h2><br/>
+            <h3>Datenschutz</h3>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer pers&ouml;nlichen Daten sehr ernst.
+                Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen
+                Datenschutzvorschriften sowie dieser Datenschutzerkl&auml;rung.
+            </p>
+            <p>Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten m&ouml;glich.
+                Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen)
+                erhoben werden, erfolgt dies, soweit m&ouml;glich, stets auf freiwilliger Basis. Diese Daten werden
+                ohne Ihre ausdr&uuml;ckliche Zustimmung nicht an Dritte weitergegeben.
+            </p>
+            <p>Wir weisen darauf hin, dass die Daten&uuml;bertragung im Internet (z.B. bei der Kommunikation per E-Mail)
+                Sicherheitsl&uuml;cken aufweisen kann. Ein l&uuml;ckenloser Schutz der Daten vor dem Zugriff durch
+                Dritte ist nicht m&ouml;glich.
+            </p>
+            <p>&nbsp;</p>
+            <h3>Cookies</h3>
+            <p>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen
+                Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver
+                und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die
+                Ihr Browser speichert.
+            </p>
+            <p>Die meisten der von uns verwendeten Cookies sind so genannte
+                „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gel&ouml;scht. Andere Cookies bleiben auf
+                Ihrem Endger&auml;t gespeichert, bis Sie diese l&ouml;schen. Diese Cookies erm&ouml;glichen es uns, Ihren
+                Browser beim n&auml;chsten Besuch wiederzuerkennen.
+            </p>
+            <p>Sie k&ouml;nnen Ihren Browser so einstellen,
+                dass Sie &uuml;ber das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die
+                Annahme von Cookies f&uuml;r bestimmte F&auml;lle oder generell ausschlie&szlig;en sowie das automatische
+                L&ouml;schen der Cookies beim Schlie&szlig;en des Browser aktivieren. Bei der Deaktivierung von Cookies
+                kann die Funktionalit&auml;t dieser Website eingeschr&auml;nkt sein.
+            </p>
+            <p>&nbsp;</p>
+            <h3>Server-Log- Files</h3>
+            <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log Files,
+                die Ihr Browser automatisch an uns &uuml;bermittelt. Dies sind:
+            </p>
+            <ul>
+                <li>Browsertyp und Browserversion</li>
+                <li>verwendetes Betriebssystem</li>
+                <li>Referrer URL</li>
+                <li>Hostname des zugreifenden Rechners</li>
+                <li>Uhrzeit der Serveranfrage</li>
+            </ul>
+            <p>Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenf&uuml;hrung dieser Daten mit anderen
+                Datenquellen wird nicht vorgenommen. Wir behalten uns vor, diese Daten nachtr&auml;glich zu pr&uuml;fen,
+                wenn uns konkrete Anhaltspunkte f&uuml;r eine rechtswidrige Nutzung bekannt werden.
+            </p>
+            <p>&nbsp;</p> 
+            <h3>Kontaktformular</h3>
+            <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular 
+                inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und f&uuml;r den 
+                Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+            </p>
+            <p>&nbsp;</p> 
+            <h3>Widerspruch Werbe-Mails</h3>
+            <p>Der Nutzung von im Rahmen der Impressumspflicht ver&ouml;ffentlichten Kontaktdaten zur &Uuml;bersendung 
+                von nicht ausdr&uuml;cklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. 
+                Die Betreiber der Seiten behalten sich ausdr&uuml;cklich rechtliche Schritte im Falle der unverlangten 
+                Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.
+            </p>
+            <p>&nbsp;</p> 
+            <p>Quelle: <a href="https://www.e- recht24.de">https://www.e-recht24.de</a></p>
+        </div>
+    </div>
+</body>
+</html>

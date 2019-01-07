@@ -1,0 +1,12 @@
+.container-index {
+	text-align: center;
+}
+
+.thumbnail {
+	border-radius: 2px;
+	box-shadow: 10px 10px 10px #A8A8A8;
+	max-width: 741px;
+	margin-left: auto;
+	margin-right: auto;
+}
+

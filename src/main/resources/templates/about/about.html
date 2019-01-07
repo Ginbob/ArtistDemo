@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+   <link rel="stylesheet" href="../css/about.css" th:href="@{/css/about.css}" type="text/css" />
+   <title>Über mich</title>
+</head>
+<body>
+   <nav th:replace="fragments/general-includes :: header"></nav>
+   <div class="jumbotron">
+      <div class="container distancer-left">
+          <div th:if="${loggedIn}">
+            <a th:href="@{/about/edit}" class="btn btn-primary"><i class="fa fa-plus"></i> Seite bearbeiten</a>
+         </div>
+         <div class="row">
+            <div class="col-sm-9">
+	            <h2 th:text="${about.title}">Ludwig Burandt</h2>
+				<th:block th:each="textPart : ${textParts}">
+					<p th:utext="${textPart}"></p>
+				</th:block>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

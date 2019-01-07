@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+	<link rel="stylesheet" href="../css/index.css" th:href="@{/css/index.css}" type="text/css" />
+	<title>Burandt - Kunst</title>
+</head>
+<body>
+	<nav th:replace="fragments/general-includes :: header"></nav>
+	<div class="jumbotron">
+		<div class="container container-index">
+			<div th:if="${loggedIn}">
+				<a th:href="@{/index/edit}" class="btn btn-primary"><i class="fa fa-pencil"></i> Seite bearbeiten</a>
+			</div>
+			<th:block th:if="${index != null}">
+				<h2 th:text="${index.headline}">Herzlich Willkommen</h2>
+				<p th:text="${index.paragraph}">auf Louis Website</p>
+				<hr class="gradient-style" />
+				<div class="thumbnail">
+					<a th:href="@{/art/__${category}__/image/{filename}(filename=${index.imageFileName})}">
+						<img th:attr="src=@{/art/__${category}__/image/{filename}(filename=${index.imageFileName})}" />
+					</a>
+				</div>
+			</th:block>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+h2 {
+	padding-bottom: 15px;
+}
+
+.about-textarea {
+    width: 80%;
+    height: 40%;
+    min-height: 200px;
+}
+
+.jumbotron p {
+    font-size: 1.3em;
+}

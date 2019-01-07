@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:fragment="general-includes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Dies ist der Webauftritt von Ludwig Burandt" />
+    <meta name="keywords" content="Ludwig Burandt, Burandt, Hagen a. T. W., Hagen, Burandt Hagen" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+		crossorigin="anonymous" />
+	<link rel="icon" th:href="@{/icons/Brush-icon.png}" />
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../css/general.css" th:href="@{/css/general.css}" type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Malar:600|Roboto:300" rel="stylesheet">
+</th:block>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" th:fragment="header">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-navbar" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand menu-option" th:href="@{/index}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><strong> Start</strong></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="collapsable-navbar">
+      <ul class="nav navbar-nav">
+        <li class="menu-option"><a th:href="@{/about}">Über mich</a></li>
+        <li class="dropdown menu-option">
+          <a th:href="@{/art/current}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bildwerke <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a th:href="@{/art/current}">Aktuelle Werke</a></li>
+              <li role="separator" class="dropdown-separator"></li>
+              <li><a th:href="@{/art/abstract}">Nicht-gegenständliche Malerei</a></li>
+              <li role="separator" class="dropdown-separator"></li>
+              <li><a th:href="@{/art/representational}">Gegenständliche Malerei</a></li>
+              <li role="separator" class="dropdown-separator"></li>
+              <li><a th:href="@{/art/drawing}">Zeichnungen</a></li>
+              <li role="separator" class="dropdown-separator"></li>
+              <li><a th:href="@{/art/collage}">Collagen</a></li>
+          </ul>
+        </li>
+        <li class="menu-option"><a th:href="@{/exhibition}"> Ausstellungen</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li class="menu-option"><a th:href="@{/contact}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Kontakt</a></li>
+          <li class="menu-option"><a th:href="@{/impressum}">Impressum</a></li>
+          <li th:if="${loggedIn}" class="menu-option"><a th:href="@{/logout}">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

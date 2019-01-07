@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/exhibition.css"
+          th:href="@{/css/exhibition.css}" type="text/css" />
+    <title>Ausstellungen</title>
+</head>
+<body>
+<nav th:replace="fragments/general-includes :: header"></nav>
+    <div class="jumbotron">
+        <div class="container">
+            <div th:if="${loggedIn}">
+                <a th:href="@{/exhibition/new}" class="btn btn-primary"><i class="fa fa-plus"></i> Neue Ausstellung erfassen</a>
+                <a th:href="@{/exhibition/__${exhibition.id}__/edit}" class="btn btn-primary"><i class="fa fa-pencil"></i> Ausstellung bearbeiten</a>
+            </div>
+            <h2 th:text="${exhibition.title}"></h2>
+            <hr class="gradient-style-left" />
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <h3>Beginn:</h3>
+                        <p th:text="${#dates.format(exhibition.startDate, 'dd.MM.yyyy')}"></p>
+                        <h3>Ende:</h3>
+                        <p th:text="${#dates.format(exhibition.endDate, 'dd.MM.yyyy')}"></p>
+                    </div>
+                    <div>
+                        <h3>Aussteller:</h3>
+                        <p th:text="${exhibition.exhibitor}"></p>
+                    </div>
+                    <div th:unless="${exhibition.location == null}">
+                        <h3>Ort:</h3>
+                        <p th:text="${exhibition.location}"></p>
+                    </div>
+                    <div th:unless="${exhibition.openingTimes == null}">
+                        <h3>&#214;ffnungszeiten:</h3>
+                        <p th:text="${exhibition.openingTimes}"></p>
+                    </div>
+                    <div th:unless="${exhibition.vernissage == null}">
+                        <h3>Vernissage:</h3>
+                        <p th:text="${exhibition.vernissage}"></p>
+                    </div>
+                    <div id="description" th:if="${exhibition.hasDescription()}">
+                        <h3>Pressemitteilung:</h3>
+                        <p th:utext="${exhibition.description}"></p>
+                        <br/>
+                        <a th:if="${exhibition.hasLink()}" th:href="@{${exhibition.link}}">Weitere Informationen</a>
+                    </div>
+                </div>
+                <div class="col-md-6" th:if="${exhibition.poster != null}">
+                    <a th:href="@{/art/exhibition/image/{filename}(filename=${exhibition.poster.filename})}">
+                        <img class="detail-poster" th:attr="src=@{/art/exhibition/image/{filename}(filename=${exhibition.poster.filename})}" />
+                    </a>
+                </div>
+            </div>
+            <hr class="gradient-style-left"/>
+            <th:block th:if="${#lists.size(exhibition.paintings) > 0}">
+            <h3>Einblicke in die Ausstellung:</h3>
+                <div class="row">
+                    <th:block th:each="painting : ${exhibition.paintings}">
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="detail-painting-container">
+                                <div class="thumbnail">
+                                    <a th:href="@{/art/exhibition/image/{filename}(filename=${painting.datei})}">
+                                        <img th:attr="src=@{/art/exhibition/image/{filename}(filename=${painting.datei})}" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</body>
+</html>

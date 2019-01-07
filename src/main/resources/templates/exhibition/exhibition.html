@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+   <link rel="stylesheet" href="../css/exhibition.css"
+      th:href="@{/css/exhibition.css}" type="text/css" />
+   <title>Ausstellungen</title>
+</head>
+<body>
+   <nav th:replace="fragments/general-includes :: header"></nav>
+   <div class="jumbotron">
+      <div class="container">
+          <div th:if="${loggedIn}">
+              <a th:href="@{/exhibition/new}" class="btn btn-primary"><i class="fa fa-plus"></i> Neue Ausstellung erfassen</a>
+          </div>
+         <h2>Aktuelle / Geplante Ausstellungen</h2>
+         <hr class="gradient-style-left" /><br/>
+      </div>
+      <div class="container">
+         <div class="row">
+            <th:block th:each="exhibition : ${currentOrFutureExhibitions}">
+                <div class="col-sm-6 col-md-4">
+                    <div class="container exhibition-container">
+                        <h3 th:text="${exhibition.title}">Beschreibung</h3>
+                        <p th:inline="text">[[${#dates.format(exhibition.startDate, 'dd.MM.yyyy')}]]<br/>
+                            - <br/>
+                            [[${#dates.format(exhibition.endDate, 'dd.MM.yyyy')}]]
+                        </p>
+                        <br/>
+                        <th:block th:if="${exhibition.poster != null}">
+                            <img class="overview-container-painting" th:attr="src=@{/art/exhibition/image/{filename}(filename=${exhibition.poster})}" />
+                        </th:block>
+                        <br/><br/>
+                        <p th:text="${exhibition.location}"></p>
+                        <p><a th:href="${#mvc.url('show_exhibition_detail').arg(0, exhibition.id).build()}">weitere Informationen</a></p>
+                    </div>
+                </div>
+            </th:block>
+         </div>
+      </div>
+   </div>
+   <div class="jumbotron">
+       <div class="container">
+           <h2>Vergangene Austellungen</h2>
+           <hr class="gradient-style-left" />
+       </div>
+       <div class="container">
+           <div class="row">
+               <th:block th:each="exhibition : ${pastExhibitions}">
+                   <div class="container">
+                       <div class="col-xs-2"><p class="exhibition-text" th:text="${exhibition.exhibitionDate}">Austellungsdatum</p></div>
+                       <div class="col-xs-10">
+                           <p><a th:href="${#mvc.url('show_exhibition_detail').arg(0, exhibition.id).build()}" th:text="${exhibition.title}"></a></p>
+                       </div>
+                   </div>
+               </th:block>
+           </div>
+       </div>
+   </div>
+</body>
+</html>

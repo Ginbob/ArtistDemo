@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/general-includes :: general-includes"></th:block>
+    <link rel="stylesheet" href="../css/index.css" th:href="@{/css/index.css}" type="text/css" />
+    <title>Burandt - Kunst</title>
+</head>
+<body>
+<nav th:replace="fragments/general-includes :: header"></nav>
+<div class="jumbotron">
+    <div class="container">
+        <form method="post" th:action="@{/index/edit}" th:object="${indexWrapper}"  enctype="multipart/form-data">
+            <label>Titel:</label><br/>
+            <input type="text" th:value="${index.headline}" th:field="*{index.headline}" name="title" id="title-input" />
+            <br/><br/>
+            <label>Text:</label>
+            <textarea class="form-control" th:value="${index.paragraph}" th:field="*{index.paragraph}"></textarea>
+            <br/>
+            <input type="file" class="form-control" id="files" name="files" accept="image/*"/>
+            <br/>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-floppy-o"></i> Speichern
+            </button>
+        </form>
+        <br/>
+        <div class="thumbnail">
+            <img th:attr="src=@{/art/__${category}__/image/{filename}(filename=${index.imageFileName})}" />
+        </div>
+    </div>
+</div>
+</body>
+</html>
